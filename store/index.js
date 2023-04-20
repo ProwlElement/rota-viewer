@@ -21,7 +21,7 @@ export const getters = {
 // actions
 export const actions = {
   // rotas
-  fetchRotas() {
+  fetchAllRotas(context) {
     return fetch('https://my.api.mockaroo.com/rotas?key=727fabe0')
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +30,7 @@ export const actions = {
       .catch((err) => console.error(err))
   },
   // users
-  fetchUsers() {
+  fetchAllUsers(context) {
     return fetch('https://my.api.mockaroo.com/users?key=727fabe0')
       .then((res) => res.json())
       .then((data) => {
@@ -39,11 +39,11 @@ export const actions = {
       .catch((err) => console.error(err))
   },
   // users by id
-  fetchRotaById(id) {
+  fetchRotaById(context, id) {
     return fetch(`https://my.api.mockaroo.com/rotas/${id}?key=727fabe0`)
       .then((res) => res.json())
       .then((data) => {
-        context.commit('setUsers', data)
+        context.commit('setUserRota', data)
       })
       .catch((err) => console.error(err))
   },
